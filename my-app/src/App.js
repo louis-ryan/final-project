@@ -8,7 +8,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       songList: [
-        "https://www.youtube.com/watch?v=5zo4Mm4N9LQ",
+        "https://youtu.be/pnHihK4dI58",
         "https://youtu.be/QUMuDWDVd20",
         "https://youtu.be/4CuJqtNdcJU",
         "https://www.youtube.com/watch?v=ldcZoXz58q4&t",

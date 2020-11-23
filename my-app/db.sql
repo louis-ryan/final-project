@@ -8,3 +8,6 @@ CREATE TABLE tracks(
     bpm VARCHAR(255),
     key VARCHAR(255)
 );
+
+INSERT INTO tracks (url, bpm, key)
+VALUES (https://youtu.be/4R9Cki4ZrP0, 90, A);
