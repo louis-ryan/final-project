@@ -4,7 +4,7 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import ReactPlayer from "react-player/youtube";
 
-export default class Deck extends React.Component {
+export default class Deck_A extends React.Component {
   constructor(props) {
     super(props);
     this.videoId = props.videoId;
@@ -23,8 +23,20 @@ export default class Deck extends React.Component {
     this.setState({ ...this.state, playback: 1 });
   }
 
-  onClickNext() {
-    this.setState({});
+  setPlayback1() {
+    this.setState({ ...this.state, playback: 2 });
+  }
+  setPlayback2() {
+    this.setState({ ...this.state, playback: 1.5 });
+  }
+  setPlayback3() {
+    this.setState({ ...this.state, playback: 1 });
+  }
+  setPlayback4() {
+    this.setState({ ...this.state, playback: 0.75 });
+  }
+  setPlayback5() {
+    this.setState({ ...this.state, playback: 0.5 });
   }
 
   render() {
@@ -33,7 +45,6 @@ export default class Deck extends React.Component {
       <>
         <div
           style={{
-           
             width: "400px",
             height: "320px",
             overflow: "hidden",
@@ -82,7 +93,7 @@ export default class Deck extends React.Component {
                     height: "40px",
                   }}
                   onClick={() => {
-                    this.props.getNewSong();
+                    this.props.getNewSongA();
                   }}
                 >
                   NEXT
@@ -108,14 +119,7 @@ export default class Deck extends React.Component {
             </div>
             <div>
               <button
-                style={{
-                  width: "248px",
-                  height: "248px",
-                  borderRadius: "50%",
-                  marginLeft: "78px",
-                  marginTop: "-32px",
-                  opacity: "10%",
-                }}
+                className="matchtrack"
                 onMouseDown={() => {
                   this.onClickMatch();
                   console.log("button on value: ", this.state.playback);
@@ -125,9 +129,60 @@ export default class Deck extends React.Component {
 
                   console.log("button off value: ", this.state.playback);
                 }}
+              ></button>
+            </div>
+            <div
+              style={{
+                width: "32px",
+                height: "200px",
+
+                zIndex: "8",
+                position: "absolute",
+                marginTop: "-280px",
+                marginLeft: "364px",
+                textAlign: "center",
+              }}
+            >
+              <div
+                onClick={() => {
+                  this.setPlayback1();
+                }}
+                className="playback"
               >
-                MATCH
-              </button>
+                2
+              </div>
+              <div
+                onClick={() => {
+                  this.setPlayback2();
+                }}
+                className="playback"
+              >
+                1.5
+              </div>
+              <div
+                onClick={() => {
+                  this.setPlayback3();
+                }}
+                className="playback"
+              >
+                1.0
+              </div>
+              <div
+                onClick={() => {
+                  this.setPlayback4();
+                }}
+                className="playback"
+              >
+                .75
+              </div>
+              <div
+                onClick={() => {
+                  this.setPlayback5();
+                }}
+                className="playback"
+              >
+                .5
+              </div>
             </div>
           </div>
         </div>
