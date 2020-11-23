@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-// import axios from "./axios";
+// import axios from "axios";
 import Deck from "./Deck";
 
 export default class App extends React.Component {
@@ -19,15 +19,6 @@ export default class App extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   axios.get("/").then(({ data }) => {
-  //     const { id, url, bpm, key } = data;
-  //     this.setState({
-  //       // Add urls to the songList array
-  //     })
-  //   })
-  // }
-
   getNextSong1() {
     this.setState({ ...this.state, songCount1: this.state.songCount1 + 1 });
   }
@@ -38,7 +29,32 @@ export default class App extends React.Component {
       <>
         <div
           style={{
-            marginTop: "80px",
+            height: "80px",
+            width: "100%",
+            display: "flex",
+            justifyContent: "left",
+            backgroundColor: "brown",
+          }}
+        >
+          <div
+            style={{
+              width: "160px",
+              height: "80px",
+            }}
+          >
+            TEMPO
+          </div>
+          <div
+            style={{
+              width: "160px",
+              height: "80px",
+            }}
+          >
+            KEY
+          </div>
+        </div>
+        <div
+          style={{
             width: "100%",
             display: "flex",
             justifyContent: "center",
@@ -49,8 +65,6 @@ export default class App extends React.Component {
               width: "800px",
               display: "flex",
               flexWrap: "wrap",
-
-              
             }}
           >
             <Deck
@@ -59,31 +73,36 @@ export default class App extends React.Component {
               getNewSong={() => {
                 this.getNextSong1();
               }}
-            >A</Deck>{" "}
+            >
+              A
+            </Deck>{" "}
             <Deck
               key={2}
               videoId={this.state.songList[this.state.songCount1]}
               getNewSong={() => {
                 this.getNextSong1();
               }}
-            >B</Deck>{" "}
+            >
+              B
+            </Deck>{" "}
             <Deck
               key={3}
               videoId={this.state.songList[this.state.songCount1]}
               getNewSong={() => {
                 this.getNextSong1();
               }}
-            >C</Deck>{" "}
+            >
+              C
+            </Deck>{" "}
             <Deck
               key={4}
               videoId={this.state.songList[this.state.songCount1]}
               getNewSong={() => {
                 this.getNextSong1();
               }}
-            >D</Deck>
-            {/* <Deck></Deck>
-            <Deck></Deck>
-            <Deck></Deck> */}
+            >
+              D
+            </Deck>
           </div>
         </div>
       </>

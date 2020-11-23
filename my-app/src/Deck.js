@@ -78,7 +78,7 @@ export default class Deck extends React.Component {
                 <button
                   style={{
                     marginTop: "0px",
-                    width: "80px",
+                    width: "96px",
                     height: "40px",
                   }}
                   onClick={() => {
@@ -98,6 +98,7 @@ export default class Deck extends React.Component {
             >
               <Slider
                 style={{
+                  marginLeft: "-120px",
                   width: "160px",
                 }}
                 onChange={(value) => {
@@ -108,10 +109,12 @@ export default class Deck extends React.Component {
             <div>
               <button
                 style={{
-                  width: "120px",
-                  height: "40px",
-                  marginLeft: "160px",
-                  marginTop: "28px",
+                  width: "248px",
+                  height: "248px",
+                  borderRadius: "50%",
+                  marginLeft: "78px",
+                  marginTop: "-32px",
+                  opacity: "10%",
                 }}
                 onMouseDown={() => {
                   this.onClickMatch();
