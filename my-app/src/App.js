@@ -38,6 +38,7 @@ export default class App extends React.Component {
       <>
         <div
           style={{
+            marginTop: "80px",
             width: "100%",
             display: "flex",
             justifyContent: "center",
@@ -48,6 +49,8 @@ export default class App extends React.Component {
               width: "800px",
               display: "flex",
               flexWrap: "wrap",
+
+              
             }}
           >
             <Deck
@@ -56,28 +59,28 @@ export default class App extends React.Component {
               getNewSong={() => {
                 this.getNextSong1();
               }}
-            ></Deck>{" "}
+            >A</Deck>{" "}
             <Deck
               key={2}
               videoId={this.state.songList[this.state.songCount1]}
               getNewSong={() => {
                 this.getNextSong1();
               }}
-            ></Deck>{" "}
+            >B</Deck>{" "}
             <Deck
               key={3}
               videoId={this.state.songList[this.state.songCount1]}
               getNewSong={() => {
                 this.getNextSong1();
               }}
-            ></Deck>{" "}
+            >C</Deck>{" "}
             <Deck
               key={4}
               videoId={this.state.songList[this.state.songCount1]}
               getNewSong={() => {
                 this.getNextSong1();
               }}
-            ></Deck>
+            >D</Deck>
             {/* <Deck></Deck>
             <Deck></Deck>
             <Deck></Deck> */}

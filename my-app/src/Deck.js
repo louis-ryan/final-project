@@ -33,11 +33,21 @@ export default class Deck extends React.Component {
       <>
         <div
           style={{
-            width: "480px",
-            height: "240px",
+           
+            width: "400px",
+            height: "320px",
+            overflow: "hidden",
+            backgroundColor: "grey",
+            borderWidth: "2px",
+            borderColor: "black",
           }}
         >
           <ReactPlayer
+            style={{
+              marginLeft: "-120px",
+              marginBottom: "40px",
+              clipPath: "circle(120px at center)",
+            }}
             loop={true}
             playing={true}
             volume={this.state.volume}
@@ -46,67 +56,63 @@ export default class Deck extends React.Component {
           />
 
           <div
+            className="mixer"
             style={{
               width: "400px",
-              marginTop: "-120px",
-              marginLeft: "16px",
-              position: "absolute",
-              zIndex: "2",
+              height: "240px",
+              marginTop: "-400px",
+              marginLeft: "0px",
+              // position: "absolute",
+              // zIndex: "2",
+
+              opacity: "80%",
             }}
-            id="iframecontent"
           >
             <div
               style={{
-                backgroundColor: "black",
-                opacity: "80%",
-                width: "240px",
+                height: "240px",
                 color: "white",
               }}
             >
-              <div>DECK (decknumber)</div>
-              {/* <div>
-                <div>var-a</div>
-                <div>var-b</div>
-                <div>var-c</div>
-              </div> */}
               <div>
                 <button
+                  style={{
+                    marginTop: "0px",
+                    width: "80px",
+                    height: "40px",
+                  }}
                   onClick={() => {
                     this.props.getNewSong();
                   }}
                 >
-                  CHOOSE RANDOM SONG
+                  NEXT
                 </button>
               </div>
             </div>
-          </div>
-          <div
-            style={{
-              width: "100px",
-              marginTop: "-80px",
-              marginLeft: "300px",
-              position: "absolute",
-              zIndex: "2",
-            }}
-            id="iframecontent"
-          >
             <div
               style={{
-                backgroundColor: "black",
-                opacity: "80%",
-
-                color: "white",
+                height: "80px",
+                marginLeft: "240px",
+                marginTop: "-232px",
               }}
             >
               <Slider
                 style={{
-                  width: "80px",
+                  width: "160px",
                 }}
                 onChange={(value) => {
                   this.setVolume(value / 100);
                 }}
               />
+            </div>
+            <div>
               <button
+                style={{
+                  width: "120px",
+                  height: "40px",
+                  marginLeft: "160px",
+                  marginTop: "28px",
+                }}
                 onMouseDown={() => {
                   this.onClickMatch();
                   console.log("button on value: ", this.state.playback);
@@ -116,7 +122,9 @@ export default class Deck extends React.Component {
 
                   console.log("button off value: ", this.state.playback);
                 }}
-              ></button>
+              >
+                MATCH
+              </button>
             </div>
           </div>
         </div>
