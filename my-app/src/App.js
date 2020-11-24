@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import YTSearch from "youtube-api-search";
-// import axios from "axios";
+import youtube from "./YoutubeAPI";
+import Search from "./Search";
 import Deck_A from "./Deck_A";
 import Deck_B from "./Deck_B";
 import Deck_C from "./Deck_C";
@@ -11,6 +11,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      videos: [],
+      selectedVideo: null,
       songList: [
         "https://youtu.be/pnHihK4dI58",
         "https://youtu.be/QUMuDWDVd20",
@@ -26,19 +28,6 @@ export default class App extends React.Component {
     };
   }
 
-  trackSearch = (term) => {
-    YTSearch(
-      { key: "AIzaSyCTkiorxlq7xyAEz3Kdu4g2lUu28inPtyk", term: term },
-      (tracks) => {
-        // console.log("tracks: ", tracks);
-        this.setState({
-          tracks: tracks,
-          displayTracks: tracks[0],
-        });
-      }
-    );
-  };
-
   getNextSongA() {
     this.setState({ ...this.state, songCountA: this.state.songCountA + 1 });
   }
@@ -52,6 +41,22 @@ export default class App extends React.Component {
     this.setState({ ...this.state, songCountD: this.state.songCountD + 1 });
   }
 
+  handleSubmit = async (termFromSearchBar) => {
+    const response = await youtube.get("/search", {
+      params: {
+        q: termFromSearchBar,
+      },
+    });
+
+    this.setState({
+      videos: response.data.items,
+    });
+    console.log("this is resp", response);
+  };
+  handleVideoSelect = (video) => {
+    this.setState({ selectedVideo: video });
+  };
+
   render() {
     console.log(this.state);
     return (
@@ -61,27 +66,9 @@ export default class App extends React.Component {
             height: "80px",
             width: "100%",
             display: "flex",
-            justifyContent: "left",
-            backgroundColor: "brown",
+            justifyContent: "center",
           }}
-        >
-          <div
-            style={{
-              width: "160px",
-              height: "80px",
-            }}
-          >
-            TEMPO
-          </div>
-          <div
-            style={{
-              width: "160px",
-              height: "80px",
-            }}
-          >
-            KEY
-          </div>
-        </div>
+        ></div>
         <div
           style={{
             width: "100%",
@@ -89,52 +76,58 @@ export default class App extends React.Component {
             justifyContent: "center",
           }}
         >
+          <Search handleFormSubmit={this.handleSubmit} />
           <div
             style={{
-              width: "800px",
+              width: "808px",
               display: "flex",
               flexWrap: "wrap",
             }}
           >
-            <Deck_A
-              style={{
-                overflow: "hidden",
-              }}
-              key={1}
-              videoId={this.state.songList[this.state.songCountA]}
-              getNewSongA={() => {
-                this.getNextSongA();
-              }}
-            >
-              A
-            </Deck_A>{" "}
-            <Deck_B
-              key={2}
-              videoId={this.state.songList[this.state.songCountB]}
-              getNewSongB={() => {
-                this.getNextSongB();
-              }}
-            >
-              B
-            </Deck_B>{" "}
-            <Deck_C
-              key={3}
-              videoId={this.state.songList[this.state.songCountC]}
-              getNewSongC={() => {
-                this.getNextSongC();
-              }}
-            >
-              C
-            </Deck_C>{" "}
-            <Deck_D
-              key={4}
-              videoId={this.state.songList[this.state.songCountD]}
-              getNewSongD={() => {
-                this.getNextSongD();
-              }}
-            >
-              D
-            </Deck_D>
+            <div className="deckcontainer">
+              <Deck_A
+                key={1}
+                videoId={this.state.songList[this.state.songCountA]}
+                getNewSongA={() => {
+                  this.getNextSongA();
+                }}
+              >
+                A
+              </Deck_A>{" "}
+            </div>
+            <div className="deckcontainer">
+              <Deck_B
+                key={2}
+                videoId={this.state.songList[this.state.songCountB]}
+                getNewSongB={() => {
+                  this.getNextSongB();
+                }}
+              >
+                B
+              </Deck_B>{" "}
+            </div>
+            <div className="deckcontainer">
+              <Deck_C
+                key={3}
+                videoId={this.state.songList[this.state.songCountC]}
+                getNewSongC={() => {
+                  this.getNextSongC();
+                }}
+              >
+                C
+              </Deck_C>{" "}
+            </div>
+            <div className="deckcontainer">
+              <Deck_D
+                key={4}
+                videoId={this.state.songList[this.state.songCountD]}
+                getNewSongD={() => {
+                  this.getNextSongD();
+                }}
+              >
+                D
+              </Deck_D>
+            </div>
           </div>
         </div>
       </>

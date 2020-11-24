@@ -44,11 +44,11 @@ export default class Deck_A extends React.Component {
     return (
       <>
         <div
+          className="panels"
           style={{
             width: "400px",
             height: "320px",
             overflow: "hidden",
-            backgroundColor: "grey",
             borderWidth: "2px",
             borderColor: "black",
           }}
@@ -87,16 +87,21 @@ export default class Deck_A extends React.Component {
             >
               <div>
                 <button
+                  className="cue"
                   style={{
-                    marginTop: "0px",
-                    width: "96px",
-                    height: "40px",
+                  
+                    borderRadius: "50%",
+                    marginTop: "16px",
+                    marginLeft: "16px",
+                    width: "80px",
+                    height: "80px",
+                    zoom: "75%",
                   }}
                   onClick={() => {
                     this.props.getNewSongA();
                   }}
                 >
-                  NEXT
+                  <h1>CUE</h1>
                 </button>
               </div>
             </div>
@@ -108,7 +113,10 @@ export default class Deck_A extends React.Component {
               }}
             >
               <Slider
+              className="slider"
                 style={{
+                
+                  marginTop: "16px",
                   marginLeft: "-120px",
                   width: "160px",
                 }}
@@ -132,15 +140,19 @@ export default class Deck_A extends React.Component {
               ></button>
             </div>
             <div
+              className="shadow"
               style={{
-                width: "32px",
-                height: "200px",
-
+                opacity: "80%",
+                // width: "32px",
+                zoom: "75%",
                 zIndex: "8",
                 position: "absolute",
-                marginTop: "-280px",
-                marginLeft: "364px",
+                marginTop: "-320px",
+                marginLeft: "480px",
                 textAlign: "center",
+                borderRadius: "4px",
+                overflow: "hidden",
+                // border: "0.25px solid white",
               }}
             >
               <div
