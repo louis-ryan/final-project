@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import youtube from "./YoutubeAPI";
 import Search from "./Search";
+import Searchlist from "./Searchlist";
 import Deck_A from "./Deck_A";
 import Deck_B from "./Deck_B";
 import Deck_C from "./Deck_C";
@@ -14,31 +15,31 @@ export default class App extends React.Component {
       videos: [],
       selectedVideo: null,
       songList: [
-        "https://youtu.be/pnHihK4dI58",
-        "https://youtu.be/QUMuDWDVd20",
-        "https://youtu.be/4CuJqtNdcJU",
-        "https://www.youtube.com/watch?v=ldcZoXz58q4&t",
-        "https://www.youtube.com/watch?v=ldcZoXz58q4&t",
-        "https://www.youtube.com/watch?v=ldcZoXz58q4&t",
+        // "https://youtu.be/pnHihK4dI58",
+        // "https://youtu.be/QUMuDWDVd20",
+        // "https://youtu.be/4CuJqtNdcJU",
+        // "https://www.youtube.com/watch?v=ldcZoXz58q4&t",
+        // "https://www.youtube.com/watch?v=ldcZoXz58q4&t",
+        // "https://www.youtube.com/watch?v=ldcZoXz58q4&t",
       ],
-      songCountA: 0,
-      songCountB: 0,
-      songCountC: 0,
-      songCountD: 0,
+      songSelectA: false,
+      songSelectB: false,
+      songSelectC: false,
+      songSelectD: false,
     };
   }
 
   getNextSongA() {
-    this.setState({ ...this.state, songCountA: this.state.songCountA + 1 });
+    this.setState({ ...this.state, songSelectA: true });
   }
   getNextSongB() {
-    this.setState({ ...this.state, songCountB: this.state.songCountB + 1 });
+    this.setState({ ...this.state, songSelectB: true });
   }
   getNextSongC() {
-    this.setState({ ...this.state, songCountC: this.state.songCountC + 1 });
+    this.setState({ ...this.state, songSelectC: true });
   }
   getNextSongD() {
-    this.setState({ ...this.state, songCountD: this.state.songCountD + 1 });
+    this.setState({ ...this.state, songSelectD: true });
   }
 
   handleSubmit = async (termFromSearchBar) => {
@@ -51,14 +52,17 @@ export default class App extends React.Component {
     this.setState({
       videos: response.data.items,
     });
-    console.log("this is resp", response);
+    console.log("response", response);
   };
   handleVideoSelect = (video) => {
     this.setState({ selectedVideo: video });
   };
+  handleVideoSelect = (video) => {
+    this.setState({ ...this.state, songSelectA: false });
+  };
 
   render() {
-    console.log(this.state);
+    // console.log("is this the video: ",this.state);
     return (
       <>
         <div
@@ -76,7 +80,25 @@ export default class App extends React.Component {
             justifyContent: "center",
           }}
         >
-          <Search handleFormSubmit={this.handleSubmit} />
+          {this.state.songSelectA && (
+            <div
+              style={{
+                width: "404px",
+                height: "644px",
+                border: "0.25px solid white",
+                borderRadius: "8px",
+                marginRight: "4px",
+                opacity: "50%",
+              }}
+            >
+              <Search handleFormSubmit={this.handleSubmit} />
+              <Searchlist
+                handleVideoSelect={this.handleVideoSelect}
+                videos={this.state.videos}
+              />
+            </div>
+          )}
+
           <div
             style={{
               width: "808px",
@@ -87,7 +109,8 @@ export default class App extends React.Component {
             <div className="deckcontainer">
               <Deck_A
                 key={1}
-                videoId={this.state.songList[this.state.songCountA]}
+                // videoId={this.state.songList[this.state.songCountA]}
+                videoId={this.state?.selectedVideo?.id?.videoId}
                 getNewSongA={() => {
                   this.getNextSongA();
                 }}

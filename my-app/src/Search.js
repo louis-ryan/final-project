@@ -14,16 +14,7 @@ class Search extends React.Component {
   render() {
     return (
       <>
-        <div
-          style={{
-            width: "404px",
-            height: "644px",
-            border: "0.25px solid white",
-            borderRadius: "8px",
-            marginRight: "4px",
-            opacity: "50%",
-          }}
-        >
+
           <form onSubmit={this.handleSubmit}>
             <input
               onChange={this.handleChange}
@@ -38,7 +29,7 @@ class Search extends React.Component {
               }}
             ></input>
           </form>
-        </div>
+     
       </>
     );
   }

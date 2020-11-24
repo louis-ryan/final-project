@@ -8,7 +8,8 @@ export default class Deck_A extends React.Component {
   constructor(props) {
     super(props);
     this.videoId = props.videoId;
-    this.state = { volume: 0, playback: 1 };
+    this.selectedVideo = props.selectedVideo;
+    this.state = { volume: 0, playback: 1, selectedVideo: null };
   }
 
   setVolume(volume) {
@@ -16,7 +17,7 @@ export default class Deck_A extends React.Component {
   }
 
   onClickMatch() {
-    this.setState({ ...this.state, playback: 0.25 });
+    this.setState({ ...this.state, playback: -0.25 });
   }
 
   onReleaseMatch() {
@@ -39,8 +40,12 @@ export default class Deck_A extends React.Component {
     this.setState({ ...this.state, playback: 0.5 });
   }
 
+  handleClick() {
+    this.setState();
+  }
+
   render() {
-    console.log(this.videoId);
+    console.log("props: ", this.props);
     return (
       <>
         <div
@@ -63,7 +68,8 @@ export default class Deck_A extends React.Component {
             playing={true}
             volume={this.state.volume}
             playbackRate={this.state.playback}
-            url={this.props.videoId}
+            // url={this.props.videoId}
+            url={"https://youtu.be/" + this.props.videoId}
           />
 
           <div
@@ -89,7 +95,6 @@ export default class Deck_A extends React.Component {
                 <button
                   className="cue"
                   style={{
-                  
                     borderRadius: "50%",
                     marginTop: "16px",
                     marginLeft: "16px",
@@ -101,7 +106,7 @@ export default class Deck_A extends React.Component {
                     this.props.getNewSongA();
                   }}
                 >
-                  <h1>CUE</h1>
+                  <h1>A</h1>
                 </button>
               </div>
             </div>
@@ -113,9 +118,8 @@ export default class Deck_A extends React.Component {
               }}
             >
               <Slider
-              className="slider"
+                className="slider"
                 style={{
-                
                   marginTop: "16px",
                   marginLeft: "-120px",
                   width: "160px",

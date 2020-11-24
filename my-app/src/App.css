@@ -10,3 +10,13 @@ body {
   border-color: white;
   background-color: darkgrey;
 }
+
+.searchrow {
+  filter: invert(0%);
+  background-color: black;
+}
+
+.searchrow:hover {
+  filter: invert(100%);
+  cursor: pointer;
+}
