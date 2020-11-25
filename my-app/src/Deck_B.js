@@ -7,7 +7,7 @@ import ReactPlayer from "react-player/youtube";
 export default class Deck_B extends React.Component {
   constructor(props) {
     super(props);
-    this.videoId = props.videoId;
+    this.videoIdB = props.videoIdB;
     this.state = { volume: 0, playback: 1 };
   }
 
@@ -40,7 +40,7 @@ export default class Deck_B extends React.Component {
   }
 
   render() {
-    console.log(this.videoId);
+    // console.log(this.videoId);
     return (
       <>
         <div
@@ -101,7 +101,7 @@ export default class Deck_B extends React.Component {
                     this.props.getNewSongB();
                   }}
                 >
-                  <h1>CUE</h1>
+                  <h1>B</h1>
                 </button>
               </div>
             </div>

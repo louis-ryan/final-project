@@ -13,15 +13,8 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       videos: [],
-      selectedVideo: null,
-      songList: [
-        // "https://youtu.be/pnHihK4dI58",
-        // "https://youtu.be/QUMuDWDVd20",
-        // "https://youtu.be/4CuJqtNdcJU",
-        // "https://www.youtube.com/watch?v=ldcZoXz58q4&t",
-        // "https://www.youtube.com/watch?v=ldcZoXz58q4&t",
-        // "https://www.youtube.com/watch?v=ldcZoXz58q4&t",
-      ],
+      songList: [],
+      selectedVideoA: null,
       songSelectA: false,
       songSelectB: false,
       songSelectC: false,
@@ -54,11 +47,37 @@ export default class App extends React.Component {
     });
     console.log("response", response);
   };
-  handleVideoSelect = (video) => {
-    this.setState({ selectedVideo: video });
+
+  handleVideoSelectA = (video) => {
+    this.setState({ ...this.state, songSelectA: false, selectedVideo: video });
   };
-  handleVideoSelect = (video) => {
+
+  handleVideoSelectB = (video) => {
+    this.setState({ ...this.state, songSelectB: false, selectedVideo: video });
+  };
+
+  handleVideoSelectC = (video) => {
+    this.setState({ ...this.state, songSelectC: false, selectedVideo: video });
+  };
+
+  handleVideoSelectD = (video) => {
+    this.setState({ ...this.state, songSelectD: false, selectedVideo: video });
+  };
+
+  handleCloseA = () => {
     this.setState({ ...this.state, songSelectA: false });
+  };
+
+  handleCloseB = () => {
+    this.setState({ ...this.state, songSelectB: false });
+  };
+
+  handleCloseC = () => {
+    this.setState({ ...this.state, songSelectC: false });
+  };
+
+  handleCloseD = () => {
+    this.setState({ ...this.state, songSelectD: false });
   };
 
   render() {
@@ -81,21 +100,78 @@ export default class App extends React.Component {
           }}
         >
           {this.state.songSelectA && (
-            <div
-              style={{
-                width: "404px",
-                height: "644px",
-                border: "0.25px solid white",
-                borderRadius: "8px",
-                marginRight: "4px",
-                opacity: "50%",
-              }}
-            >
-              <Search handleFormSubmit={this.handleSubmit} />
-              <Searchlist
-                handleVideoSelect={this.handleVideoSelect}
-                videos={this.state.videos}
-              />
+            <div className="searchclosebox">
+              <div
+                className="searchclose"
+                onClick={() => {
+                  this.handleCloseA();
+                }}
+              ></div>
+              <div className="searchbox">
+                <Search handleFormSubmit={this.handleSubmit} />
+                <Searchlist
+                  key={11}
+                  handleVideoSelect={this.handleVideoSelectA}
+                  videos={this.state.videos}
+                />
+              </div>
+            </div>
+          )}
+
+          {this.state.songSelectB && (
+            <div className="searchclosebox">
+              <div
+                className="searchclose"
+                onClick={() => {
+                  this.handleCloseB();
+                }}
+              ></div>
+              <div className="searchbox">
+                <Search handleFormSubmit={this.handleSubmit} />
+                <Searchlist
+                  key={11}
+                  handleVideoSelect={this.handleVideoSelectB}
+                  videos={this.state.videos}
+                />
+              </div>
+            </div>
+          )}
+
+          {this.state.songSelectC && (
+            <div className="searchclosebox">
+              <div
+                className="searchclose"
+                onClick={() => {
+                  this.handleCloseC();
+                }}
+              ></div>
+              <div className="searchbox">
+                <Search handleFormSubmit={this.handleSubmit} />
+                <Searchlist
+                  key={11}
+                  handleVideoSelect={this.handleVideoSelectC}
+                  videos={this.state.videos}
+                />
+              </div>
+            </div>
+          )}
+
+          {this.state.songSelectD && (
+            <div className="searchclosebox">
+              <div
+                className="searchclose"
+                onClick={() => {
+                  this.handleCloseD();
+                }}
+              ></div>
+              <div className="searchbox">
+                <Search handleFormSubmit={this.handleSubmit} />
+                <Searchlist
+                  key={11}
+                  handleVideoSelect={this.handleVideoSelectD}
+                  videos={this.state.videos}
+                />
+              </div>
             </div>
           )}
 
@@ -108,8 +184,7 @@ export default class App extends React.Component {
           >
             <div className="deckcontainer">
               <Deck_A
-                key={1}
-                // videoId={this.state.songList[this.state.songCountA]}
+                key={111}
                 videoId={this.state?.selectedVideo?.id?.videoId}
                 getNewSongA={() => {
                   this.getNextSongA();
@@ -120,8 +195,8 @@ export default class App extends React.Component {
             </div>
             <div className="deckcontainer">
               <Deck_B
-                key={2}
-                videoId={this.state.songList[this.state.songCountB]}
+                key={222}
+                videoId={this.state?.selectedVideo?.id?.videoId}
                 getNewSongB={() => {
                   this.getNextSongB();
                 }}
@@ -131,8 +206,8 @@ export default class App extends React.Component {
             </div>
             <div className="deckcontainer">
               <Deck_C
-                key={3}
-                videoId={this.state.songList[this.state.songCountC]}
+                key={333}
+                videoId={this.state?.selectedVideo?.id?.videoId}
                 getNewSongC={() => {
                   this.getNextSongC();
                 }}
@@ -142,8 +217,8 @@ export default class App extends React.Component {
             </div>
             <div className="deckcontainer">
               <Deck_D
-                key={4}
-                videoId={this.state.songList[this.state.songCountD]}
+                key={444}
+                videoId={this.state?.selectedVideo?.id?.videoId}
                 getNewSongD={() => {
                   this.getNextSongD();
                 }}

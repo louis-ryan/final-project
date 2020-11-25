@@ -11,6 +11,34 @@ body {
   background-color: darkgrey;
 }
 
+.searchbox {
+  width: 404px;
+  height: 644px;
+  border: 0.25px solid white;
+  border-radius: 8px;
+  margin-right: 4px;
+  opacity: 50%;
+}
+
+.searchclosebox {
+  display: flex;
+  justify-content: right;
+  width: 420px;
+}
+
+.searchclose {
+  margin-top: 280px;
+  width: 16px;
+  height: 80px;
+  background-color: white;
+  opacity: 50%;
+}
+
+.searchclose:hover {
+
+  opacity: 80%;
+}
+
 .searchrow {
   filter: invert(0%);
   background-color: black;

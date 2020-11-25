@@ -8,8 +8,7 @@ export default class Deck_A extends React.Component {
   constructor(props) {
     super(props);
     this.videoId = props.videoId;
-    this.selectedVideo = props.selectedVideo;
-    this.state = { volume: 0, playback: 1, selectedVideo: null };
+    this.state = { volume: 0, playback: 1 };
   }
 
   setVolume(volume) {
@@ -45,7 +44,7 @@ export default class Deck_A extends React.Component {
   }
 
   render() {
-    console.log("props: ", this.props);
+    // console.log("props: ", this.props);
     return (
       <>
         <div
@@ -68,7 +67,6 @@ export default class Deck_A extends React.Component {
             playing={true}
             volume={this.state.volume}
             playbackRate={this.state.playback}
-            // url={this.props.videoId}
             url={"https://youtu.be/" + this.props.videoId}
           />
 
