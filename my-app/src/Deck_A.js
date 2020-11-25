@@ -1,4 +1,5 @@
 import React from "react";
+import cx from "classnames";
 import "./Deck.css";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
@@ -49,6 +50,7 @@ export default class Deck_A extends React.Component {
       <>
         <div
           className="panels"
+          className="panelsempty"
           style={{
             width: "400px",
             height: "320px",
@@ -129,7 +131,12 @@ export default class Deck_A extends React.Component {
             </div>
             <div>
               <button
-                className="matchtrack"
+                // className="matchtrack"
+                // className="matchtrackempty"
+                className={cx({
+                  matchtrack: true,
+                  matchtrackempty: this.props.videoId,
+                })}
                 onMouseDown={() => {
                   this.onClickMatch();
                   console.log("button on value: ", this.state.playback);
@@ -161,7 +168,11 @@ export default class Deck_A extends React.Component {
                 onClick={() => {
                   this.setPlayback1();
                 }}
-                className="playback"
+                // className="playback"
+                className={cx({
+                  playback: true,
+                  playbackselected: this.state.playback === 2,
+                })}
               >
                 2
               </div>
@@ -169,7 +180,11 @@ export default class Deck_A extends React.Component {
                 onClick={() => {
                   this.setPlayback2();
                 }}
-                className="playback"
+                // className="playback"
+                className={cx({
+                  playback: true,
+                  playbackselected: this.state.playback === 1.5,
+                })}
               >
                 1.5
               </div>
@@ -177,7 +192,11 @@ export default class Deck_A extends React.Component {
                 onClick={() => {
                   this.setPlayback3();
                 }}
-                className="playback"
+                // className="playback"
+                className={cx({
+                  playback: true,
+                  playbackselected: this.state.playback === 1.0,
+                })}
               >
                 1.0
               </div>
@@ -185,7 +204,11 @@ export default class Deck_A extends React.Component {
                 onClick={() => {
                   this.setPlayback4();
                 }}
-                className="playback"
+                // className="playback"
+                className={cx({
+                  playback: true,
+                  playbackselected: this.state.playback === .75,
+                })}
               >
                 .75
               </div>
@@ -193,7 +216,11 @@ export default class Deck_A extends React.Component {
                 onClick={() => {
                   this.setPlayback5();
                 }}
-                className="playback"
+                // className="playback"
+                className={cx({
+                  playback: true,
+                  playbackselected: this.state.playback === .5,
+                })}
               >
                 .5
               </div>

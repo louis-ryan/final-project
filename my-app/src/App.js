@@ -41,7 +41,6 @@ export default class App extends React.Component {
         q: termFromSearchBar,
       },
     });
-
     this.setState({
       videos: response.data.items,
     });
@@ -49,19 +48,19 @@ export default class App extends React.Component {
   };
 
   handleVideoSelectA = (video) => {
-    this.setState({ ...this.state, songSelectA: false, selectedVideo: video });
+    this.setState({ ...this.state, songSelectA: false, selectedVideoA: video });
   };
 
   handleVideoSelectB = (video) => {
-    this.setState({ ...this.state, songSelectB: false, selectedVideo: video });
+    this.setState({ ...this.state, songSelectB: false, selectedVideoB: video });
   };
 
   handleVideoSelectC = (video) => {
-    this.setState({ ...this.state, songSelectC: false, selectedVideo: video });
+    this.setState({ ...this.state, songSelectC: false, selectedVideoC: video });
   };
 
   handleVideoSelectD = (video) => {
-    this.setState({ ...this.state, songSelectD: false, selectedVideo: video });
+    this.setState({ ...this.state, songSelectD: false, selectedVideoD: video });
   };
 
   handleCloseA = () => {
@@ -185,7 +184,7 @@ export default class App extends React.Component {
             <div className="deckcontainer">
               <Deck_A
                 key={111}
-                videoId={this.state?.selectedVideo?.id?.videoId}
+                videoId={this.state?.selectedVideoA?.id?.videoId}
                 getNewSongA={() => {
                   this.getNextSongA();
                 }}
@@ -196,7 +195,7 @@ export default class App extends React.Component {
             <div className="deckcontainer">
               <Deck_B
                 key={222}
-                videoId={this.state?.selectedVideo?.id?.videoId}
+                videoId={this.state?.selectedVideoB?.id?.videoId}
                 getNewSongB={() => {
                   this.getNextSongB();
                 }}
@@ -207,7 +206,7 @@ export default class App extends React.Component {
             <div className="deckcontainer">
               <Deck_C
                 key={333}
-                videoId={this.state?.selectedVideo?.id?.videoId}
+                videoId={this.state?.selectedVideoC?.id?.videoId}
                 getNewSongC={() => {
                   this.getNextSongC();
                 }}
@@ -218,7 +217,7 @@ export default class App extends React.Component {
             <div className="deckcontainer">
               <Deck_D
                 key={444}
-                videoId={this.state?.selectedVideo?.id?.videoId}
+                videoId={this.state?.selectedVideoD?.id?.videoId}
                 getNewSongD={() => {
                   this.getNextSongD();
                 }}

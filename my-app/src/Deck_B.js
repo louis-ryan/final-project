@@ -7,7 +7,7 @@ import ReactPlayer from "react-player/youtube";
 export default class Deck_B extends React.Component {
   constructor(props) {
     super(props);
-    this.videoIdB = props.videoIdB;
+    this.videoId = props.videoId;
     this.state = { volume: 0, playback: 1 };
   }
 
@@ -40,7 +40,7 @@ export default class Deck_B extends React.Component {
   }
 
   render() {
-    // console.log(this.videoId);
+    console.log("B log: ", this.props);
     return (
       <>
         <div
@@ -64,7 +64,7 @@ export default class Deck_B extends React.Component {
             playing={true}
             volume={this.state.volume}
             playbackRate={this.state.playback}
-            url={this.props.videoId}
+            url={"https://youtu.be/" + this.props.videoId}
           />
 
           <div
