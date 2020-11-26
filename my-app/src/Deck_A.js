@@ -9,8 +9,18 @@ export default class Deck_A extends React.Component {
   constructor(props) {
     super(props);
     this.videoId = props.videoId;
-    this.state = { volume: 0, playback: 1 };
+    this.state = { volume: 0, playback: 1, playing: false };
   }
+
+  setPlaying() {
+    if (this.state.playing == false) {
+      this.setState({ ...this.state, playing: true });
+    } else if (this.state.playing == true) {
+      this.setState({ ...this.state, playing: false });
+    }
+  }
+
+  
 
   setVolume(volume) {
     this.setState({ volume });
@@ -50,7 +60,7 @@ export default class Deck_A extends React.Component {
       <>
         <div
           className="panels"
-          className="panelsempty"
+          // className="panelsempty"
           style={{
             width: "400px",
             height: "320px",
@@ -66,7 +76,7 @@ export default class Deck_A extends React.Component {
               clipPath: "circle(120px at center)",
             }}
             loop={true}
-            playing={true}
+            playing={this.state.playing}
             volume={this.state.volume}
             playbackRate={this.state.playback}
             url={"https://youtu.be/" + this.props.videoId}
@@ -135,7 +145,17 @@ export default class Deck_A extends React.Component {
                 // className="matchtrackempty"
                 className={cx({
                   matchtrack: true,
-                  matchtrackempty: this.props.videoId,
+                  matchtrack1:
+                    this.state.playing == true && this.state.playback === 2,
+                  matchtrack2:
+                    this.state.playing == true && this.state.playback === 1.5,
+                  matchtrack3:
+                    this.state.playing == true && this.state.playback === 1.0,
+                  matchtrack4:
+                    this.state.playing == true && this.state.playback === 0.75,
+                  matchtrack5:
+                    this.state.playing == true && this.state.playback === 0.5,
+                  matchtrackoff: this.state.playing == false,
                 })}
                 onMouseDown={() => {
                   this.onClickMatch();
@@ -207,7 +227,7 @@ export default class Deck_A extends React.Component {
                 // className="playback"
                 className={cx({
                   playback: true,
-                  playbackselected: this.state.playback === .75,
+                  playbackselected: this.state.playback === 0.75,
                 })}
               >
                 .75
@@ -219,12 +239,26 @@ export default class Deck_A extends React.Component {
                 // className="playback"
                 className={cx({
                   playback: true,
-                  playbackselected: this.state.playback === .5,
+                  playbackselected: this.state.playback === 0.5,
                 })}
               >
                 .5
               </div>
             </div>
+          </div>
+          <div
+            onClick={() => {
+              this.setPlaying();
+            }}
+            className="playbutton"
+          >
+            <div
+              className="playindon"
+              className={cx({
+                playindon: this.state.playing == true,
+                playindoff: this.state.playing == false,
+              })}
+            ></div>
           </div>
         </div>
       </>

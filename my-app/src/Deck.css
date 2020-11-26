@@ -4,7 +4,7 @@
 }
 
 .panels {
-  background: rgb(81, 77, 69);
+  background: rgb(52, 47, 40);
   /* background: linear-gradient(
     20deg,
     rgba(0, 0, 0, 1) 0%,
@@ -12,6 +12,11 @@
     rgb(97, 51, 25) 62%,
     rgba(0, 0, 0, 1) 94%
   ); */
+  filter: grayscale(20%);
+}
+
+.panelsempty {
+  background: rgb(45, 43, 40);
   filter: grayscale(20%);
 }
 
@@ -59,18 +64,36 @@
   margin-left: 76px;
   margin-top: -48px;
   background-color: transparent;
-  animation: unset;
+
   filter: invert(100%);
 }
 
-.matchtrackempty {
+.matchtrack1 {
+  animation: spin 2s infinite linear;
+}
+.matchtrack2 {
+  animation: spin 4s infinite linear;
+}
+.matchtrack3 {
+  animation: spin 8s infinite linear;
+}
+.matchtrack4 {
   animation: spin 16s infinite linear;
+}
+.matchtrack5 {
+  animation: spin 32s infinite linear;
+}
+
+.matchtrackoff {
+  animation: unset;
+  opacity: 50%;
 }
 
 .matchtrack:hover {
   background-color: white;
   filter: invert(0%);
   opacity: 50%;
+  cursor: grab;
 }
 
 @keyframes spin {
@@ -96,10 +119,35 @@ h1 {
   opacity: 80%;
 }
 
-/* EMPTY STATE */
+.playbutton {
+  width: 56px;
+  height: 24px;
+  position: absolute;
+  z-index: 16;
+  margin-left: 316px;
+  margin-top: -220px;
+  border-radius: 4px;
+  background-color: black;
+  opacity: 80%;
+}
 
+.playindon {
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 100%;
+  margin-left: 36px;
+  margin-top: 8px;
+  box-shadow: 0px 0px 16px 4px yellow;
+}
 
-.panelsempty {
-  background: rgb(45, 43, 40);
-  filter: grayscale(20%);
+.playindoff {
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 100%;
+  margin-left: 36px;
+  margin-top: 8px;
+  opacity: 50%;
+  /* box-shadow: 0px 0px 16px 4px yellow; */
 }
