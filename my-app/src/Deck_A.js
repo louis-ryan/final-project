@@ -32,11 +32,18 @@ export default class Deck_A extends React.Component {
   //     onReleaseMatch() {
   //       this.setState({ ...this.state, playback: 2 })
   //     }
-  //   }
+  //   } else if ( this.state.playback == 1.5 ) {
+  //     onClickMatch() {
+  //       this.setState({ ...this.state, playback: -0.25 })
+  //     }
+  //     onReleaseMatch() {
+  //       this.setState({ ...this.state, playback: 1.5 })
+  //     }
+  //   } // and so on ......
   // }
 
   onClickMatch() {
-    this.setState({ ...this.state, playback: -0.25 });
+    this.setState({ ...this.state, playback: 0.25 });
   }
   onReleaseMatch() {
     this.setState({ ...this.state, playback: 1 });
