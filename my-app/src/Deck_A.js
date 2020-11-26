@@ -62,8 +62,12 @@ export default class Deck_A extends React.Component {
     return (
       <>
         <div
-          className="panels"
+          // className="panels"
           // className="panelsempty"
+          className={cx({
+            panels: true,
+            mixeron: this.state.playing == true,
+          })}
           style={{
             width: "400px",
             height: "320px",

@@ -9,6 +9,11 @@ body {
   border-width: 1px;
   border-color: white;
   background-color: darkgrey;
+  filter: brightness(1);
+}
+
+.selecteddeck {
+  filter: brightness(0.5);
 }
 
 .searchbox {
@@ -48,3 +53,4 @@ body {
   filter: invert(100%);
   cursor: pointer;
 }
+

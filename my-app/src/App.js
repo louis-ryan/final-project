@@ -1,4 +1,5 @@
 import React from "react";
+import cx from "classnames";
 import "./App.css";
 import youtube from "./YoutubeAPI";
 import Search from "./Search";
@@ -13,8 +14,8 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       videos: [],
-      songList: [],
-      selectedVideoA: null,
+      // songList: [],
+      // selectedVideoA: null,
       songSelectA: false,
       songSelectB: false,
       songSelectC: false,
@@ -23,16 +24,40 @@ export default class App extends React.Component {
   }
 
   getNextSongA() {
-    this.setState({ ...this.state, songSelectA: true, songSelectB: false, songSelectC: false, songSelectD: false, });
+    this.setState({
+      ...this.state,
+      songSelectA: true,
+      songSelectB: false,
+      songSelectC: false,
+      songSelectD: false,
+    });
   }
   getNextSongB() {
-    this.setState({ ...this.state, songSelectB: true, songSelectA: false, songSelectC: false, songSelectD: false, });
+    this.setState({
+      ...this.state,
+      songSelectB: true,
+      songSelectA: false,
+      songSelectC: false,
+      songSelectD: false,
+    });
   }
   getNextSongC() {
-    this.setState({ ...this.state, songSelectC: true, songSelectB: false, songSelectA: false, songSelectD: false, });
+    this.setState({
+      ...this.state,
+      songSelectC: true,
+      songSelectB: false,
+      songSelectA: false,
+      songSelectD: false,
+    });
   }
   getNextSongD() {
-    this.setState({ ...this.state, songSelectD: true, songSelectB: false, songSelectC: false, songSelectA: false, });
+    this.setState({
+      ...this.state,
+      songSelectD: true,
+      songSelectB: false,
+      songSelectC: false,
+      songSelectA: false,
+    });
   }
 
   handleSubmit = async (termFromSearchBar) => {
@@ -181,7 +206,15 @@ export default class App extends React.Component {
               flexWrap: "wrap",
             }}
           >
-            <div className="deckcontainer">
+            <div
+              className={cx({
+                deckcontainer: true,
+                selecteddeck:
+                  this.state.songSelectB === true ||
+                  this.state.songSelectC === true ||
+                  this.state.songSelectD === true,
+              })}
+            >
               <Deck_A
                 key={111}
                 videoId={this.state?.selectedVideoA?.id?.videoId}
@@ -192,7 +225,15 @@ export default class App extends React.Component {
                 A
               </Deck_A>{" "}
             </div>
-            <div className="deckcontainer">
+            <div
+              className={cx({
+                deckcontainer: true,
+                selecteddeck:
+                  this.state.songSelectA === true ||
+                  this.state.songSelectC === true ||
+                  this.state.songSelectD === true,
+              })}
+            >
               <Deck_B
                 key={222}
                 videoId={this.state?.selectedVideoB?.id?.videoId}
@@ -203,7 +244,15 @@ export default class App extends React.Component {
                 B
               </Deck_B>{" "}
             </div>
-            <div className="deckcontainer">
+            <div
+              className={cx({
+                deckcontainer: true,
+                selecteddeck:
+                  this.state.songSelectA === true ||
+                  this.state.songSelectB === true ||
+                  this.state.songSelectD === true,
+              })}
+            >
               <Deck_C
                 key={333}
                 videoId={this.state?.selectedVideoC?.id?.videoId}
@@ -214,7 +263,15 @@ export default class App extends React.Component {
                 C
               </Deck_C>{" "}
             </div>
-            <div className="deckcontainer">
+            <div
+              className={cx({
+                deckcontainer: true,
+                selecteddeck:
+                  this.state.songSelectA === true ||
+                  this.state.songSelectB === true ||
+                  this.state.songSelectC === true,
+              })}
+            >
               <Deck_D
                 key={444}
                 videoId={this.state?.selectedVideoD?.id?.videoId}
