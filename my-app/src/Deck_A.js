@@ -20,16 +20,24 @@ export default class Deck_A extends React.Component {
     }
   }
 
-  
-
   setVolume(volume) {
     this.setState({ volume });
   }
 
+  // beatMatch() {
+  //   if ( this.state.playback == 2 ) {
+  //     onClickMatch() {
+  //       this.setState({ ...this.state, playback: -0.25 })
+  //     }
+  //     onReleaseMatch() {
+  //       this.setState({ ...this.state, playback: 2 })
+  //     }
+  //   }
+  // }
+
   onClickMatch() {
     this.setState({ ...this.state, playback: -0.25 });
   }
-
   onReleaseMatch() {
     this.setState({ ...this.state, playback: 1 });
   }
@@ -252,8 +260,9 @@ export default class Deck_A extends React.Component {
             }}
             className="playbutton"
           >
+            {" "}
             <div
-              className="playindon"
+              // className="playindon"
               className={cx({
                 playindon: this.state.playing == true,
                 playindoff: this.state.playing == false,

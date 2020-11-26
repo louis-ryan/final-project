@@ -131,6 +131,11 @@ h1 {
   opacity: 80%;
 }
 
+.playbutton:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
 .playindon {
   width: 8px;
   height: 8px;
