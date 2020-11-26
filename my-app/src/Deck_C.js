@@ -9,7 +9,12 @@ export default class Deck_C extends React.Component {
   constructor(props) {
     super(props);
     this.videoId = props.videoId;
-    this.state = { volume: 0, playback: 1, playing: false };
+    this.state = {
+      volume: 0,
+      playback: 1,
+      playing: false,
+      originalPlayback: null,
+    };
   }
 
   setPlaying() {
@@ -25,11 +30,15 @@ export default class Deck_C extends React.Component {
   }
 
   onClickMatch() {
-    this.setState({ ...this.state, playback: 0.25 });
+    this.setState({
+      ...this.state,
+      originalPlayback: this.state.playback,
+      playback: 0.25,
+    });
   }
 
   onReleaseMatch() {
-    this.setState({ ...this.state, playback: 1 });
+    this.setState({ ...this.state, playback: this.state.originalPlayback });
   }
 
   setPlayback1() {
@@ -178,7 +187,7 @@ export default class Deck_C extends React.Component {
                 // border: "0.25px solid white",
               }}
             >
-           <div
+              <div
                 onClick={() => {
                   this.setPlayback1();
                 }}

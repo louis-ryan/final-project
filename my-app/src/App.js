@@ -23,16 +23,16 @@ export default class App extends React.Component {
   }
 
   getNextSongA() {
-    this.setState({ ...this.state, songSelectA: true });
+    this.setState({ ...this.state, songSelectA: true, songSelectB: false, songSelectC: false, songSelectD: false, });
   }
   getNextSongB() {
-    this.setState({ ...this.state, songSelectB: true });
+    this.setState({ ...this.state, songSelectB: true, songSelectA: false, songSelectC: false, songSelectD: false, });
   }
   getNextSongC() {
-    this.setState({ ...this.state, songSelectC: true });
+    this.setState({ ...this.state, songSelectC: true, songSelectB: false, songSelectA: false, songSelectD: false, });
   }
   getNextSongD() {
-    this.setState({ ...this.state, songSelectD: true });
+    this.setState({ ...this.state, songSelectD: true, songSelectB: false, songSelectC: false, songSelectA: false, });
   }
 
   handleSubmit = async (termFromSearchBar) => {
