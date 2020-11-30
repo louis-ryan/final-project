@@ -8,6 +8,7 @@ import Deck_A from "./Deck_A";
 import Deck_B from "./Deck_B";
 import Deck_C from "./Deck_C";
 import Deck_D from "./Deck_D";
+import "./IMM.svg";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -282,6 +283,19 @@ export default class App extends React.Component {
                 D
               </Deck_D>
             </div>
+          </div>
+          <div
+            style={{
+              width: "80px",
+              opacity: "50%",
+            }}
+          >
+            <img
+              style={{
+                width: "80px",
+                marginTop: "8px",              }}
+              src="IMM.svg"
+            ></img>
           </div>
         </div>
       </>

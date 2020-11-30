@@ -6,7 +6,6 @@ const Searchitem = ({ video, handleVideoSelect }) => {
     <div>
       <div
         onClick={() => handleVideoSelect(video)}
-       
         className="searchrow"
         style={{
           height: "78px",

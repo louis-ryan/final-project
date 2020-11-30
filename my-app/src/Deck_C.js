@@ -18,9 +18,9 @@ export default class Deck_C extends React.Component {
   }
 
   setPlaying() {
-    if (this.state.playing == false) {
+    if (this.state.playing === false) {
       this.setState({ ...this.state, playing: true });
-    } else if (this.state.playing == true) {
+    } else if (this.state.playing === true) {
       this.setState({ ...this.state, playing: false });
     }
   }
@@ -64,7 +64,7 @@ export default class Deck_C extends React.Component {
         <div
           className={cx({
             panels: true,
-            mixeron: this.state.playing == true,
+            mixeron: this.state.playing === true,
           })}
           style={{
             width: "400px",
@@ -152,16 +152,18 @@ export default class Deck_C extends React.Component {
                 className={cx({
                   matchtrack: true,
                   matchtrack1:
-                    this.state.playing == true && this.state.playback === 2,
+                    this.state.playing === true && this.state.playback === 2,
                   matchtrack2:
-                    this.state.playing == true && this.state.playback === 1.5,
+                    this.state.playing === true && this.state.playback === 1.5,
                   matchtrack3:
-                    this.state.playing == true && this.state.playback === 1.0,
+                    this.state.playing === true && this.state.playback === 1.0,
                   matchtrack4:
-                    this.state.playing == true && this.state.playback === 0.75,
+                    this.state.playing === true && this.state.playback === 0.75,
                   matchtrack5:
-                    this.state.playing == true && this.state.playback === 0.5,
-                  matchtrackoff: this.state.playing == false,
+                    this.state.playing === true && this.state.playback === 0.5,
+                  matchtrackmatch:
+                    this.state.playing === true && this.state.playback === 0.25,
+                  matchtrackoff: this.state.playing === false,
                 })}
                 onMouseDown={() => {
                   this.onClickMatch();
@@ -262,8 +264,8 @@ export default class Deck_C extends React.Component {
             <div
               // className="playindon"
               className={cx({
-                playindon: this.state.playing == true,
-                playindoff: this.state.playing == false,
+                playindon: this.state.playing === true,
+                playindoff: this.state.playing === false,
               })}
             ></div>
           </div>

@@ -32,6 +32,10 @@
   border: 0px solid white;
 }
 
+.cuehighlight {
+  background-color: rgb(62, 21, 9);
+}
+
 .cue:hover {
   filter: invert(100%);
 }
@@ -64,7 +68,6 @@
   margin-left: 76px;
   margin-top: -48px;
   background-color: transparent;
-
   filter: invert(100%);
 }
 
@@ -84,15 +87,20 @@
   animation: spin 32s infinite linear;
 }
 
+.matchtrackmatch {
+  animation: spin 64s infinite linear;
+}
+
 .matchtrackoff {
   animation: unset;
-  opacity: 50%;
+  opacity: 80%;
 }
 
 .matchtrack:hover {
-  background-color: white;
-  filter: invert(0%);
-  opacity: 50%;
+  /* background-color: white; */
+  border-width: 4px;
+  /* filter: invert(0%); */
+  opacity: 100%;
   cursor: grab;
 }
 
@@ -103,6 +111,11 @@
   100% {
     -webkit-transform: rotate(360deg);
   }
+}
+
+.trackloadon {
+  background-color: black;
+  opacity: 0%;
 }
 
 h1 {
@@ -156,3 +169,14 @@ h1 {
   opacity: 50%;
   /* box-shadow: 0px 0px 16px 4px yellow; */
 }
+
+/* .mediaplayer {
+  margin-left: -120px;
+  margin-bottom: 40px;
+  clip-path: circle(120px at center);
+  opacity: 20%;
+}
+
+.playeron {
+  opacity: 100%;
+} */
